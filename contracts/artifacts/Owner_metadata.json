@@ -89,7 +89,7 @@
 		"compilationTarget": {
 			"contracts/Owner.sol": "Owner"
 		},
-		"evmVersion": "cancun",
+		"evmVersion": "paris",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"

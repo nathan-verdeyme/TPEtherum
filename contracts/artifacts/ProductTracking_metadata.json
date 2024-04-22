@@ -52,6 +52,19 @@
 				"anonymous": false,
 				"inputs": [
 					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "lotId",
+						"type": "uint256"
+					}
+				],
+				"name": "LotRemoved",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
 						"indexed": true,
 						"internalType": "address",
 						"name": "oldOwner",
@@ -122,68 +135,11 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "lotId",
-						"type": "uint256"
-					}
-				],
-				"name": "getLotDetails",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					},
-					{
-						"internalType": "string",
-						"name": "",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					},
-					{
-						"internalType": "string",
-						"name": "",
-						"type": "string"
-					},
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getOwner",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "lots",
+				"name": "getLotsDetails",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -214,6 +170,24 @@
 						"internalType": "uint256",
 						"name": "dateOfPurchase",
 						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isActive",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getOwner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -251,6 +225,19 @@
 					}
 				],
 				"name": "removeFromWhitelist",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "lotId",
+						"type": "uint256"
+					}
+				],
+				"name": "removeLot",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -323,7 +310,7 @@
 		"compilationTarget": {
 			"contracts/ProductTracking.sol": "ProductTracking"
 		},
-		"evmVersion": "cancun",
+		"evmVersion": "paris",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -344,11 +331,11 @@
 			]
 		},
 		"contracts/ProductTracking.sol": {
-			"keccak256": "0x61d7ccd749c16f662f96f727a8f5d7c0b8507ac05b45a67caf74c68806d57197",
+			"keccak256": "0xca3068cd084599464246b6b7cd6fd2cd14811d11672e96b8fc2285966c6a5ffd",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://0bbee0e3b78f0ae2e7e65efcbdc5b2d5f5e45aa791d8f84d3bc53b90e0fc77cb",
-				"dweb:/ipfs/QmcVrpzA4kUEcpBfRFZJ46FnJWRf9X6xtDb2okbYgseiHt"
+				"bzz-raw://338c649de37fb924fd46c87f65e9668e8a49b1733b5ce3a2ab675985bc3edbfc",
+				"dweb:/ipfs/QmboPZNAMLKkfchxQ9vEe24gjPm42Qbo2sxxzSXgf19fo2"
 			]
 		},
 		"contracts/WhiteList.sol": {

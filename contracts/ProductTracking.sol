@@ -15,13 +15,15 @@ contract ProductTracking is WhiteList {
         string productName;
         address currentOwner;
         uint256 dateOfPurchase;
+        bool isActive;
     }
 
     uint256 private lotCounter;
-    mapping(uint256 => Lot) public lots;
+    mapping(uint256 => Lot) public getLotsDetails;
 
     event LotRegistered(uint256 lotId, string manufacturer, string productName);
     event OwnershipTransferred(uint256 lotId, address indexed previousOwner, address indexed newOwner);
+    event LotRemoved(uint256 lotId);    
 
     constructor() {
         lotCounter = 0;
@@ -31,13 +33,14 @@ contract ProductTracking is WhiteList {
         lotCounter++;
         uint256 newLotId = lotCounter;
 
-        lots[newLotId] = Lot({
+        getLotsDetails[newLotId] = Lot({
             id: newLotId,
             manufacturer: manufacturer,
             productCount: productCount,
             productName: productName,
             currentOwner: msg.sender,
-            dateOfPurchase: block.timestamp
+            dateOfPurchase: block.timestamp,
+            isActive : true
         });
 
         emit LotRegistered(newLotId, manufacturer, productName);
@@ -45,7 +48,8 @@ contract ProductTracking is WhiteList {
 
     function transferLotOwnership(uint256 lotId, address newOwner) public {
         require(isWhitelisted(newOwner), "New owner is not whitelisted");
-        Lot storage lot = lots[lotId];
+        Lot storage lot = getLotsDetails[lotId];
+        require(lot.isActive, "Lot is not active");
         require(msg.sender == lot.currentOwner, "Only current owner can transfer the lot");
 
         address previousOwner = lot.currentOwner;
@@ -55,8 +59,13 @@ contract ProductTracking is WhiteList {
         emit OwnershipTransferred(lotId, previousOwner, newOwner);
     }
 
-    function getLotDetails(uint256 lotId) public view returns (uint256, string memory, uint256, string memory, address, uint256) {
-        Lot memory lot = lots[lotId];
-        return (lot.id, lot.manufacturer, lot.productCount, lot.productName, lot.currentOwner, lot.dateOfPurchase);
+
+    function removeLot(uint256 lotId) public isOwner {
+        require(getLotsDetails[lotId].isActive, "Lot already removed or does not exist");
+
+        getLotsDetails[lotId].isActive = false;
+        emit LotRemoved(lotId); 
     }
+
+
 }
