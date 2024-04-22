@@ -21,7 +21,7 @@
 		"compilationTarget": {
 			"contracts/SafeMath.sol": "SafeMath"
 		},
-		"evmVersion": "cancun",
+		"evmVersion": "paris",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"

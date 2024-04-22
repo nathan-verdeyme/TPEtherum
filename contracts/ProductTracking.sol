@@ -2,12 +2,13 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 import "./WhiteList.sol";
+import "./AccessList.sol";
 
 /**
  * @title Product Tracking
  * @dev Tracks the registration and ownership of product lots
  */
-contract ProductTracking is WhiteList {
+contract ProductTracking is WhiteList, AccessList  {
     struct Lot {
         uint256 id;
         string manufacturer;

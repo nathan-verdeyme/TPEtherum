@@ -7,8 +7,6 @@ const web3 = new Web3(web3Provider);
 
 (async () => {
   try {
-    // Replace 'YourContractABI' with the actual ABI of your contract
-    // Replace 'ContractAddress' with the actual address of your deployed contract
     const contractInstance = new web3.eth.Contract([
 	{
 		"inputs": [],
